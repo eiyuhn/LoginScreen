@@ -1,7 +1,14 @@
 import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
+    const navigation = useNavigation();
+
+    const goToRegistrationScreen = () => {
+        navigation.navigate('Registration');  // Navigate to LoginScreen
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.bgContainer}>
@@ -42,6 +49,10 @@ const LoginScreen = () => {
                 <Text style={styles.loginButtonText}> Login </Text>
             </TouchableOpacity>
             <Text style={styles.forgotPasswordText}>Forgot Password? </Text>
+        
+            <TouchableOpacity onPress={goToRegistrationScreen}>
+                <Text style={styles.newAccount}>Don't have an account.</Text>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -70,13 +81,13 @@ const styles = StyleSheet.create({
 
     extraContainer: {
         position: 'absolute',
-        bottom: -735,   
+        bottom: -725,   
         right: -10,   
     },
 
     additionalImage: {
-        width: 150,
-        height: 150,
+        width: 140,
+        height: 140,
     },
 
     accountContainer: {
@@ -84,7 +95,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly', 
         alignItems: 'center', 
         position: 'absolute',
-        top: 545,
+        top: 580,
         width: '100%', 
     },
     
@@ -106,8 +117,8 @@ const styles = StyleSheet.create({
     },
     
     logoImage: {
-        width: 115,
-        height: 114,
+        width: 100,
+        height: 100,
     },
 
     loginContainer: {
@@ -215,6 +226,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         padding: 15,
         fontFamily: 'sans-serif',
-        
     },
+
+    newAccount: {
+        color: 'black',
+        fontSize: 14,
+        fontFamily: 'sans-serif',
+        top: 500,
+        left: 200,
+    }
 });
