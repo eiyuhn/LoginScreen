@@ -51,7 +51,7 @@ const LoginScreen = () => {
             <Text style={styles.forgotPasswordText}>Forgot Password? </Text>
         
             <TouchableOpacity onPress={goToRegistrationScreen}>
-                <Text style={styles.newAccount}>Don't have an account.</Text>
+                <Text style={styles.newAccount}>Create an account.</Text>
             </TouchableOpacity>
         </View>
     );
@@ -133,7 +133,6 @@ const styles = StyleSheet.create({
         fontWeight: '700', 
         color: '#333', 
         marginBottom: 20,
-        fontFamily: 'Sans-serif',
         top:-50,
     },
 
@@ -150,7 +149,6 @@ const styles = StyleSheet.create({
         color: 'black', 
         marginBottom: 10,
         fontSize: 16,
-        fontFamily: 'sans-serif',
         left:10,
     },
 
@@ -168,7 +166,6 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ccc',
         width: '100%',
         fontSize: 16,
-        fontFamily: 'sans-serif',
         color: '#333',
         
     },
@@ -179,7 +176,6 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop:10,
         fontSize: 16,
-        fontFamily: 'sans-serif',
         left:10,
     },
 
@@ -195,20 +191,17 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ccc',
         width: '100%',
         fontSize: 16,
-        fontFamily: 'sans-serif',
         color: '#333',
     },
 
     forgotPasswordText: {
         fontSize: 14,
         color: '#ff5252',
-        fontWeight:'800',
+        fontWeight:'500',
         textAlign: 'right',
-        marginRight: 20,
         position: 'absolute',
-        right: 0,
-        top: 450,
-        fontFamily: 'sans-serif',
+        right: 22,
+        top: 440,
     },
 
     loginButton: {
@@ -225,14 +218,13 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         padding: 15,
-        fontFamily: 'sans-serif',
     },
 
     newAccount: {
         color: 'black',
         fontSize: 14,
-        fontFamily: 'sans-serif',
         top: 500,
-        left: 200,
+        left: 216,
+        textDecorationLine: 'underline',
     }
 });

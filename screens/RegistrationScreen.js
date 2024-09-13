@@ -80,8 +80,12 @@ const RegistrationScreen = () => {
             </TouchableOpacity>
 
             <TouchableOpacity onPress={goToLoginScreen}>
-                <Text style={styles.haveAccount}>Already have an account.</Text>
+                <Text style={styles.haveAccount}>
+                    Already have an account?           
+                  <Text style={styles.clickHereText}>Click here!</Text>
+                </Text>
             </TouchableOpacity>
+
         </View>
     );
 }
@@ -136,7 +140,6 @@ const styles = StyleSheet.create({
         fontWeight: '700', 
         color: '#333', 
         marginBottom: 20,
-        fontFamily: 'Sans-serif',
         top:-50,
     },
 
@@ -151,7 +154,6 @@ const styles = StyleSheet.create({
         width: '100%',
         color: 'black', 
         fontSize: 16,
-        fontFamily: 'sans-serif',
         left:10,
     },
 
@@ -169,16 +171,13 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ccc',
         width: '100%',
         fontSize: 16,
-        fontFamily: 'sans-serif',
         color: '#333',
-        
     },
 
     numText: {
         width: '100%',
         color: 'black', 
         fontSize: 16,
-        fontFamily: 'sans-serif',
         left:10,
     },
 
@@ -196,16 +195,13 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ccc',
         width: '100%',
         fontSize: 16,
-        fontFamily: 'sans-serif',
         color: '#333',
-        
     },
 
     emailText: {
         width: '100%',
         color: 'black', 
         fontSize: 16,
-        fontFamily: 'sans-serif',
         left:10,
     },
 
@@ -222,16 +218,13 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ccc',
         width: '100%',
         fontSize: 16,
-        fontFamily: 'sans-serif',
         color: '#333',
-        
     },
 
     passwordText: {
         width: '100%',
         color: 'black',
         fontSize: 16,
-        fontFamily: 'sans-serif',
         left:10,
     },
 
@@ -247,7 +240,6 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ccc',
         width: '100%',
         fontSize: 16,
-        fontFamily: 'sans-serif',
         color: '#333',
     },
 
@@ -256,7 +248,6 @@ const styles = StyleSheet.create({
         color: 'black',
         marginTop:10,
         fontSize: 16,
-        fontFamily: 'sans-serif',
         left:10,
     },
 
@@ -272,7 +263,6 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ccc',
         width: '100%',
         fontSize: 16,
-        fontFamily: 'sans-serif',
         color: '#333',
     },
 
@@ -280,7 +270,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         position: 'absolute',
-        top: 620,
+        top: 623,
         left: 30,
     },
 
@@ -304,7 +294,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: 'black',
         fontWeight:'800',
-        fontFamily: 'sans-serif',
     },
 
     createButton: {
@@ -321,14 +310,19 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         padding: 15,
-        fontFamily: 'sans-serif',
     },
 
     haveAccount: {
+        fontSize: 15,
         color: 'black',
-        fontSize: 14,
-        fontFamily: 'sans-serif',
         top: 680,
-        left: 180,
+        left: 20,
     },
+
+    clickHereText: {
+        color: 'brown',
+        textDecorationLine: 'underline',
+        fontWeight: '700',
+    },
+
 });
