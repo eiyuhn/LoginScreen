@@ -5,324 +5,153 @@ import { useNavigation } from '@react-navigation/native';
 const RegistrationScreen = () => {
     const navigation = useNavigation();
 
-    const [isChecked, setIsChecked] = useState(false);  // State for checkbox
+    const [isChecked, setIsChecked] = useState(false);
 
     const toggleCheckbox = () => {
-        setIsChecked(!isChecked);  // Toggles checkbox
-    }
+        setIsChecked(!isChecked);
+    };
 
     const goToLoginScreen = () => {
-        navigation.navigate('Login');  // Navigate to LoginScreen
-    }
+        navigation.navigate('Login');
+    };
 
     return (
         <View style={styles.container}>
-            <View style={styles.bgContainer}>
+            <View style={styles.header}>
                 <Image source={require("../assets/bg1.png")} style={styles.bgImage} />
+                <Image source={require("../assets/orig_logo.png")} style={styles.logoImage} />
             </View>
-            <View style={styles.logoContainer}>
-                <Image source={require("../assets/orig_logo.png")} style={styles.logoImage}/>
-            </View>
-            <View style={styles.extraContainer}>
-                <Image source={require("../assets/add.png")} style={styles.additionalImage}/>
-            </View>
-           
-            <View style={styles.createContainer}>
-                <Text style={styles.createLabel}>Create account</Text> 
-            </View>
-            <View style={styles.regInfosContainer}>
-                <View>
-                    <Text style={styles.nameText}>Name</Text>
+            <View style={styles.formContainer}>
+                <Text style={styles.title}>Create Account</Text>
+                <TextInput style={styles.input} placeholder="Name" placeholderTextColor="#aaa" />
+                <TextInput style={styles.input} placeholder="Contact Number" placeholderTextColor="#aaa" keyboardType="phone-pad" />
+                <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#aaa" keyboardType="email-address" />
+                <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#aaa" secureTextEntry />
+                <TextInput style={styles.input} placeholder="Confirm Password" placeholderTextColor="#aaa" secureTextEntry />
+                <View style={styles.checkboxContainer}>
+                    <TouchableOpacity onPress={toggleCheckbox} style={styles.checkbox}>
+                        {isChecked && <View style={styles.checkedBox} />}
+                    </TouchableOpacity>
+                    <Text style={styles.checkboxText}>I accept the terms and conditions</Text>
                 </View>
-                <View style={styles.nameContainer}>
-                    <TextInput style={styles.nameTextInput} 
-                    placeholder="Enter name" /> 
-                </View>
-                <View>
-                    <Text style={styles.numText}>Contact Number</Text>
-                </View>
-                <View style={styles.numContainer}>
-                    <TextInput style={styles.numTextInput} 
-                    placeholder="Enter number" /> 
-                </View>
-                <View>
-                    <Text style={styles.emailText}>Email</Text>
-                </View>
-                <View style={styles.emailAddressContainer}>
-                    <TextInput style={styles.emailAddressTextInput} 
-                    placeholder="Enter email" /> 
-                </View>
-                <View>
-                    <Text style={styles.passwordText}>Password</Text>
-                </View>
-                <View style={styles.passwordContainer}>
-                    <TextInput style={styles.passwordTextInput} 
-                    placeholder="Enter password" secureTextEntry/> 
-                </View>
-                <View>
-                    <Text style={styles.confirmPasswordText}>Confirm Password</Text>
-                </View>
-                <View style={styles.confirmPasswordContainer}>
-                    <TextInput style={styles.confirmPasswordTextInput} 
-                    placeholder="Enter password" secureTextEntry/> 
-                </View>
-            </View>
-
-            <View style={styles.checkboxContainer}>
-                <TouchableOpacity onPress={toggleCheckbox} style={styles.checkbox}>
-                    {isChecked && <View style={styles.checkedBox} />} 
+                <TouchableOpacity style={styles.createButton}>
+                    <Text style={styles.createButtonText}>Create</Text>
                 </TouchableOpacity>
-                <Text style={styles.acceptText}>I have accepted the terms and conditions.</Text>
+                <TouchableOpacity onPress={goToLoginScreen}>
+                    <Text style={styles.footerText}>
+                        Already have an account? <Text style={styles.linkText}>Click here!</Text>
+                    </Text>
+                </TouchableOpacity>
             </View>
-
-            <TouchableOpacity style={styles.createButton}>
-                <Text style={styles.createButtonText}> Create </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={goToLoginScreen}>
-                <Text style={styles.haveAccount}>
-                    Already have an account?           
-                  <Text style={styles.clickHereText}>Click here!</Text>
-                </Text>
-            </TouchableOpacity>
-
         </View>
     );
-}
+};
 
 export default RegistrationScreen;
 
 const styles = StyleSheet.create({
-    bgContainer: {
+    container: {
         flex: 1,
-        justifyContent: 'center',
+        backgroundColor: '#F7E9D7',
+        paddingBottom: 200,
     },
-
-    bgImage: {
-        width: "100%",
-        height: 900,
-        position: 'absolute',
-        top: 30,
-        left: 0,
-    },
-
-    logoContainer: {
-        position: 'absolute',
-        top: 35,
-        left: 1,
-    },
-
-    extraContainer: {
-        position: 'absolute',
-        bottom: -725,   
-        right: -10,   
-    },
-
-    additionalImage: {
-        width: 140,
-        height: 140,
-    },
-    
-    logoImage: {
-        width: 100,
-        height: 100,
-    },
-
-    createContainer: {
-        position: 'absolute',
+    header: {
+        flex: 1,
         alignItems: 'center',
-        top: 190,
-        width: '100%'
+        justifyContent: 'center',
+        backgroundColor: '#8B5E3C',
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30,
+        paddingBottom: 40,
     },
-
-    createLabel: {
-        fontSize: 30, 
-        fontWeight: '700', 
-        color: '#333', 
-        marginBottom: 20,
-        top:-50,
-    },
-
-    regInfosContainer: {
-        width: '90%',
-        marginLeft: 15,
+    bgImage: {
         position: 'absolute',
-        top: 200,
-    },
-
-    nameText: {
         width: '100%',
-        color: 'black', 
+        height: '100%',
+        opacity: 0.3,
+    },
+    logoImage: {
+        width: 120,
+        height: 130,
+        resizeMode: 'contain',
+        top: 20,
+    },
+    formContainer: {
+        flex: 2,
+        paddingHorizontal: 20,
+        paddingTop: 40,
+    },
+    title: {
+        fontSize: 28,
+        fontWeight: 'bold',
+        color: '#4E342E',
+        textAlign: 'center',
+        marginBottom: 20,
+    },
+    input: {
+        backgroundColor: '#FFF8E7',
+        borderRadius: 25,
+        paddingHorizontal: 15,
+        paddingVertical: 10,
         fontSize: 16,
-        left:10,
+        color: '#4E342E',
+        marginBottom: 15,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 2,
     },
-
-    nameContainer: {
-        width: '100%',
-        marginBottom: 10,
-        backgroundColor: 'beige',
-        borderRadius: 20,
-        padding:10,
-        
-    },
-
-    nameTextInput: {
-        borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
-        width: '100%',
-        fontSize: 16,
-        color: '#333',
-    },
-
-    numText: {
-        width: '100%',
-        color: 'black', 
-        fontSize: 16,
-        left:10,
-    },
-
-    numContainer: {
-        width: '100%',
-        marginBottom: 10,
-        backgroundColor: 'beige',
-        borderRadius: 20,
-        padding:10,
-        
-    },
-
-    numTextInput: {
-        borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
-        width: '100%',
-        fontSize: 16,
-        color: '#333',
-    },
-
-    emailText: {
-        width: '100%',
-        color: 'black', 
-        fontSize: 16,
-        left:10,
-    },
-
-    emailAddressContainer: {
-        width: '100%',
-        marginBottom: 10,
-        backgroundColor: 'beige',
-        borderRadius: 20,
-        padding:10,
-    },
-
-    emailAddressTextInput: {
-        borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
-        width: '100%',
-        fontSize: 16,
-        color: '#333',
-    },
-
-    passwordText: {
-        width: '100%',
-        color: 'black',
-        fontSize: 16,
-        left:10,
-    },
-
-    passwordContainer: {
-        width: '100%',
-        backgroundColor: 'beige',
-        borderRadius: 20,
-        padding:10,
-    },
-
-    passwordTextInput: {
-        borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
-        width: '100%',
-        fontSize: 16,
-        color: '#333',
-    },
-
-    confirmPasswordText: {
-        width: '100%',
-        color: 'black',
-        marginTop:10,
-        fontSize: 16,
-        left:10,
-    },
-
-    confirmPasswordContainer: {
-        width: '100%',
-        backgroundColor: 'beige',
-        borderRadius: 20,
-        padding:10,
-    },
-
-    confirmPasswordTextInput: {
-        borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
-        width: '100%',
-        fontSize: 16,
-        color: '#333',
-    },
-
     checkboxContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        position: 'absolute',
-        top: 623,
-        left: 30,
+        marginVertical: 15,
     },
-
     checkbox: {
         width: 20,
         height: 20,
         borderWidth: 2,
-        borderColor: '#333',
+        borderColor: '#8B5E3C',
+        borderRadius: 4,
         justifyContent: 'center',
         alignItems: 'center',
-        marginRight: 8,
+        marginRight: 10,
     },
-
     checkedBox: {
         width: 12,
         height: 12,
-        backgroundColor: '#333',
+        backgroundColor: '#8B5E3C',
     },
-
-    acceptText: {
+    checkboxText: {
         fontSize: 14,
-        color: 'black',
-        fontWeight:'800',
+        color: '#4E342E',
     },
-
     createButton: {
-        backgroundColor: '#3D3D4C',
-        borderRadius: 20,
+        backgroundColor: '#8B5E3C',
+        borderRadius: 25,
         alignItems: 'center',
-        top: 670,
-        width: '90%',
-        marginLeft: 16
+        paddingVertical: 15,
+        marginTop: 10,
+        shadowColor: '#8B5E3C',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+        elevation: 4,
     },
-
     createButtonText: {
-        color: 'white',
+        color: '#FFF8E7',
         fontSize: 18,
+        fontWeight: '600',
+    },
+    footerText: {
+        textAlign: 'center',
+        fontSize: 14,
+        color: '#6D4C41',
+        marginTop: 20,
+    },
+    linkText: {
+        color: '#8B5E3C',
         fontWeight: 'bold',
-        padding: 15,
-    },
-
-    haveAccount: {
-        fontSize: 15,
-        color: 'black',
-        top: 680,
-        left: 20,
-    },
-
-    clickHereText: {
-        color: 'brown',
         textDecorationLine: 'underline',
-        fontWeight: '700',
     },
-
 });
